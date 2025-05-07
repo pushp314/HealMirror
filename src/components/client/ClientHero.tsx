@@ -1,5 +1,4 @@
 import React from "react";
-import herobg from "../../assests/clientbg.svg";
 import WhatIsHealmirror from "./WhatIsHealmirror";
 import ClientHighlights from "./ClientHighlights";
 interface ClientHeroProps {
@@ -40,7 +39,7 @@ const ClientHero: React.FC<ClientHeroProps> = ({ isClient, setIsClient }) => {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src={herobg}
+            src="https://drive.google.com/file/d/1Eigaok5yZKfNtzzsR4pJHkp_HIdmRSKz/view?usp=sharing"
             alt="Peaceful landscape"
             className="w-full h-full object-cover"
           />
