@@ -19,15 +19,15 @@ const Testimonials: React.FC = () => {
   ];
 
   return (
-    <section id='#testimonials' className="py-16 md:py-24 bg-gray-50">
-      <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-gray-800 mb-12">What Our Clients have to say</h2>
+    <section id="testimonials" className="py-12 sm:py-16 md:py-24 bg-gray-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-8 sm:mb-12">What Our Clients have to say</h2>
         
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
           {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className="bg-white p-8 rounded-lg shadow-md relative">
-              <div className="text-yellow-400 text-5xl absolute top-4 left-4 opacity-20">"</div>
-              <p className="text-gray-600 mb-6 relative z-10">
+            <div key={testimonial.id} className="bg-white p-6 sm:p-8 rounded-lg shadow-md relative">
+              <div className="text-yellow-400 text-4xl sm:text-5xl absolute top-4 left-4 opacity-20">"</div>
+              <p className="text-gray-600 text-sm sm:text-base mb-4 sm:mb-6 relative z-10">
                 {testimonial.quote}
               </p>
               
@@ -35,11 +35,11 @@ const Testimonials: React.FC = () => {
                 <img 
                   src={testimonial.avatar} 
                   alt={testimonial.name} 
-                  className="w-12 h-12 rounded-full mr-4"
+                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full mr-3 sm:mr-4"
                 />
                 <div>
-                  <h4 className="font-bold text-gray-800">{testimonial.name}</h4>
-                  <p className="text-gray-500 text-sm">{testimonial.title}</p>
+                  <h4 className="font-bold text-gray-800 text-sm sm:text-base">{testimonial.name}</h4>
+                  <p className="text-gray-500 text-xs sm:text-sm">{testimonial.title}</p>
                 </div>
               </div>
             </div>
@@ -50,4 +50,4 @@ const Testimonials: React.FC = () => {
   );
 };
 
-export default Testimonials;
+export default Testimonials

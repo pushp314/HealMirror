@@ -11,7 +11,7 @@ import PrivacyPolicy from "./components/security/PrivacyPolicy";
 
 function App() {
   return (
-    <div className="font-sans">
+    <div className="font-sans overflow-x-hidden">
       <Router>
         <Routes>
           {/* Main landing page */}
@@ -30,9 +30,8 @@ function App() {
           />
           {/* About page */}
           <Route path="/about" element={<About />} />
-          <Route path="/terms" element={<TermsAndConditions/>} />
-          <Route path="/privacy" element={<PrivacyPolicy/>} />
-
+          <Route path="/terms" element={<TermsAndConditions />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
         </Routes>
       </Router>
     </div>

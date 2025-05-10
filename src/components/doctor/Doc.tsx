@@ -4,10 +4,10 @@ import Highlights from './Highlights'
 
 const Doc = () => {
   return (
-    <div>
-        <Hero/>
-        <WhatIsHealmirror/>
-        <Highlights/>
+    <div className="w-full overflow-x-hidden">
+      <Hero/>
+      <WhatIsHealmirror/>
+      <Highlights/>
     </div>
   )
 }
