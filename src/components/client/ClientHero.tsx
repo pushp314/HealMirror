@@ -13,10 +13,10 @@ const ClientHero: React.FC<ClientHeroProps> = ({ isClient, setIsClient }) => {
     <main>
       <section className="relative overflow-hidden m-4 sm:m-6 md:m-8 lg:m-10">
         {/* Toggle Button */}
-        <div className="absolute top-2 sm:top-4 left-1/2 transform -translate-x-1/2 z-20 w-full max-w-md px-4">
-          <div className="rounded-full p-1 inline-flex shadow-lg bg-white/80 backdrop-blur-sm w-full justify-center">
+        <div className="absolute top-2 sm:top-4 left-1/2 transform -translate-x-1/2 z-20 px-4 w-full max-w-[483px]">
+          <div className="rounded-full p-1 inline-flex shadow-lg bg-white/80 backdrop-blur-sm w-full h-[68px] justify-center">
             <button
-              className={`py-2 px-4 sm:px-6 rounded-full text-xs sm:text-sm md:text-base transition-all duration-300 flex-1 ${
+              className={`py-2 px-3 sm:px-6 rounded-full text-xs sm:text-sm md:text-base transition-all duration-300 flex-1 whitespace-nowrap ${
                 isClient
                   ? "bg-yellow-400 text-gray-800 shadow-md"
                   : "bg-transparent text-gray-500 hover:text-gray-700"
@@ -26,7 +26,7 @@ const ClientHero: React.FC<ClientHeroProps> = ({ isClient, setIsClient }) => {
               Client
             </button>
             <button
-              className={`py-2 px-4 sm:px-6 rounded-full text-xs sm:text-sm md:text-base transition-all duration-300 flex-1 ${
+              className={`py-2 px-3 sm:px-6 rounded-full text-xs sm:text-sm md:text-base transition-all duration-300 flex-1 whitespace-nowrap ${
                 !isClient
                   ? "bg-yellow-400 text-gray-800 shadow-md"
                   : "bg-transparent text-gray-500 hover:text-gray-700"
@@ -43,26 +43,25 @@ const ClientHero: React.FC<ClientHeroProps> = ({ isClient, setIsClient }) => {
           <img
             src={herobg}
             alt="Peaceful landscape"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center"
           />
         </div>
 
         {/* Hero Content */}
-        <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24 lg:py-32 relative z-10">
-          <div className="max-w-2xl mx-auto text-center">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-didot text-[#FBFBFB] mb-4 sm:mb-8">
+        <div className="container mx-auto px-4 sm:px-6 py-20 sm:py-24 md:py-32 lg:py-40 relative z-10 flex flex-col items-center justify-center min-h-[calc(30vh)] sm:min-h-[calc(40vh)] md:min-h-[calc(50vh)]">
+          <div className="max-w-2xl text-center mt-10 sm:mt-16 md:mt-20">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-[#FBFBFB] mb-4 sm:mb-8">
               Affordable Therapy
               <br />
               For Everyone
             </h1>
 
-            <p className="text-4xl sm:text-5xl md:text-6xl lg:text-[70px] leading-tight sm:leading-[1] tracking-[0em] font-didot text-[#FDC30B]">
+            <p className="text-2xl sm:text-2xl md:text-2xl lg:text-2xl leading-tight sm:leading-[1] tracking-[0em] font-serif text-[#FDC30B]">
               Make your Problems
             </p>
-            <p className="text-4xl sm:text-5xl md:text-6xl lg:text-[70px] leading-tight sm:leading-[1] tracking-[0em] font-didot text-[#FDC30B] mb-6 sm:mb-8">
+            <p className="text-2xl sm:text-2xl md:text-2xl lg:text-2xl leading-tight sm:leading-[1] tracking-[0em] font-serif text-[#FDC30B] mb-6 sm:mb-8">
               less of a problem with <span className="underline">Therapy.</span>
             </p>
-
             <button className="bg-[#FDC30B] font-inter text-sm sm:text-base text-[#373B44] px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl font-medium hover:bg-yellow-500 transition-colors duration-300 flex items-center mx-auto">
               Download The App
               <svg

@@ -6,82 +6,66 @@ import Highlights from './Highlights';
 const Hero: React.FC = () => {
   const [isClient, setIsClient] = useState(true);
 
+  const ToggleSwitch = () => (
+    <div className="absolute top-2 sm:top-4 left-1/2 transform -translate-x-1/2 z-20 px-4 w-full max-w-[483px] h-[68px]">
+      <div className="rounded-full p-1 inline-flex shadow-lg bg-white/80 backdrop-blur-sm w-full h-full justify-center">
+        <button
+          className={`py-2 px-3 sm:px-6 rounded-full text-xs sm:text-sm md:text-base transition-all duration-300 flex-1 whitespace-nowrap ${
+            isClient
+              ? "bg-yellow-400 text-gray-800 shadow-md"
+              : "bg-transparent text-gray-500 hover:text-gray-700"
+          }`}
+          onClick={() => setIsClient(true)}
+        >
+          Client
+        </button>
+        <button
+          className={`py-2 px-3 sm:px-6 rounded-full text-xs sm:text-sm md:text-base transition-all duration-300 flex-1 whitespace-nowrap ${
+            !isClient
+              ? "bg-yellow-400 text-gray-800 shadow-md"
+              : "bg-transparent text-gray-500 hover:text-gray-700"
+          }`}
+          onClick={() => setIsClient(false)}
+        >
+          Mental Health Professional
+        </button>
+      </div>
+    </div>
+  );
+
   return (
     <>
       {isClient ? (
         <section className="relative">
-          <div className="absolute top-2 sm:top-4 left-1/2 transform -translate-x-1/2 z-20 w-full max-w-md px-4">
-            <div className="bg-gray-100/80 backdrop-blur-sm rounded-full p-1 inline-flex shadow-lg w-full justify-center">
-              <button
-                className={`py-2 px-4 sm:px-6 rounded-full text-xs sm:text-sm md:text-base transition-all duration-300 flex-1 ${
-                  isClient 
-                    ? 'bg-white text-gray-800 shadow-md' 
-                    : 'bg-transparent text-gray-500 hover:text-gray-700'
-                }`}
-                onClick={() => setIsClient(true)}
-              >
-                Client
-              </button>
-              <button
-                className={`py-2 px-4 sm:px-6 rounded-full text-xs sm:text-sm md:text-base transition-all duration-300 flex-1 ${
-                  !isClient 
-                    ? 'bg-yellow-400 text-gray-800 shadow-md' 
-                    : 'bg-transparent text-gray-500 hover:text-gray-700'
-                }`}
-                onClick={() => setIsClient(false)}
-              >
-                Mental Health Professional
-              </button>
-            </div>
-          </div>
+          <ToggleSwitch />
           <ClientHero isClient={isClient} setIsClient={setIsClient} />
         </section>
       ) : (
         <>
-          <section className="relative bg-blue-500 overflow-hidden m-4 sm:m-6 md:m-8 lg:m-10">
-            <div className="absolute top-2 sm:top-4 left-1/2 transform -translate-x-1/2 z-20 w-full max-w-md px-4">
-              <div className="bg-gray-100/80 backdrop-blur-sm rounded-full p-1 inline-flex shadow-lg w-full justify-center">
-                <button
-                  className={`py-2 px-4 sm:px-6 rounded-full text-xs sm:text-sm md:text-base transition-all duration-300 flex-1 ${
-                    isClient 
-                      ? 'bg-white text-gray-800 shadow-md' 
-                      : 'bg-transparent text-gray-500 hover:text-gray-700'
-                  }`}
-                  onClick={() => setIsClient(true)}
-                >
-                  Client
-                </button>
-                <button
-                  className={`py-2 px-4 sm:px-6 rounded-full text-xs sm:text-sm md:text-base transition-all duration-300 flex-1 ${
-                    !isClient 
-                      ? 'bg-yellow-400 text-gray-800 shadow-md' 
-                      : 'bg-transparent text-gray-500 hover:text-gray-700'
-                  }`}
-                  onClick={() => setIsClient(false)}
-                >
-                  Mental Health Professional
-                </button>
-              </div>
-            </div>
+          <section className="relative bg-[#3c7bca] overflow-hidden m-4 sm:m-6 md:m-8 lg:m-10 pt-16 sm:pt-20 md:pt-24">
+            <ToggleSwitch />
 
             <div className="absolute right-0 top-0 h-full w-1/2 md:w-2/3 lg:w-1/2">
-              <img 
+              <img
                 src="https://res.cloudinary.com/dgzv4skru/image/upload/v1746559622/herobg_cnq7a1.svg"
                 alt="Flower background"
-                className="h-full w-full object-cover object-center"
+                className="h-full w-full object-cover object-right"
               />
             </div>
 
-            <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24 lg:py-32 relative z-10">
+            <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24 lg:py-32 relative z-10 mt-8 sm:mt-0">
               <div className="max-w-xl">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-yellow-400 leading-tight">
+                <h1
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-poppins text-yellow-400 leading-tight"
+                  style={{ letterSpacing: 0, lineHeight: '100%' }}
+                >
                   No Commissions<br />
                   No Nothing<br />
                   It's Totally<br />
                   Free!
                 </h1>
-                <p className="text-white text-lg sm:text-xl md:text-2xl mt-4 sm:mt-6">
-                  Provide therapy with ease
+                <p className="text-white font-bold text-lg sm:text-xl md:text-2xl mt-4 sm:mt-6">
+                  Provide therapy <br /> with ease
                 </p>
                 <button className="mt-6 sm:mt-8 bg-white text-gray-800 px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl font-medium hover:bg-gray-100 transition-colors duration-300 flex items-center text-sm sm:text-base">
                   Download The App
@@ -92,7 +76,6 @@ const Hero: React.FC = () => {
               </div>
             </div>
           </section>
-
           <WhatIsHealmirror />
           <Highlights />
         </>
@@ -101,4 +84,4 @@ const Hero: React.FC = () => {
   );
 };
 
-export default Hero
+export default Hero;

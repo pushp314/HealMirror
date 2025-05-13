@@ -12,7 +12,8 @@ export default {
   			inter: [
   				'Inter',
   				'sans-serif'
-  			]
+  			],
+			poppins: ['Poppins', 'sans-serif'],
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

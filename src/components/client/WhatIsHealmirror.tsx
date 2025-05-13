@@ -11,9 +11,14 @@ const WhatIsHealmirror: React.FC = () => {
               <img
                 src="https://res.cloudinary.com/dxkwt2ssi/image/upload/v1746645171/image_dfcbgo.png"
                 alt="Healmirror Logo"
-                className="w-12 h-12 sm:w-16 sm:h-16"
+                className=" sm:w-16 sm:h-18 lg:w-20 lg:h-24 object-cover"
+                loading="lazy"
+                width={80}
+                height={80}
               />
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-yellow-400">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold  text-yellow-400 " 
+               
+                >
                 What Is
                 <br />
                 Healmirror

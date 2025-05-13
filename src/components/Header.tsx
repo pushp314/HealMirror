@@ -7,20 +7,37 @@ const Header: React.FC = () => {
 
   const handleScroll = () => {
     const sections = ["features", "testimonials", "contact"];
-    const scrollPosition = window.scrollY + window.innerHeight / 2;
+    // Adjusted scrollPosition to be more accurate for typical full-height sections
+    // considering the header's height might affect calculations if not accounted for.
+    // For simplicity, using a point slightly below the top of the viewport.
+    const scrollPositionThreshold = window.scrollY + (document.getElementById('features')?.offsetTop !== undefined ? 100 : window.innerHeight / 3); // Adjust 100 as needed
+
+    let currentSection = "";
     sections.forEach((sectionId) => {
       const section = document.getElementById(sectionId);
       if (section) {
         const rect = section.getBoundingClientRect();
-        if (rect.top <= scrollPosition && rect.bottom >= scrollPosition) {
-          setActiveSection(sectionId);
+        // Check if the top of the section is at or above the threshold
+        // and the section is still partially visible from the top.
+        if (rect.top <= scrollPositionThreshold && rect.bottom >= 0) {
+          if (!currentSection || section.getBoundingClientRect().top < document.getElementById(currentSection)!.getBoundingClientRect().top) {
+            currentSection = sectionId;
+          }
         }
       }
     });
+    // Fallback to no active section if scrolled to top or no section matches
+    if (window.scrollY < 200 && !currentSection) { // Arbitrary small value for top
+        setActiveSection("");
+    } else if (currentSection) {
+        setActiveSection(currentSection);
+    }
   };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+    // Initial check in case the page loads on a section
+    handleScroll();
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -33,7 +50,7 @@ const Header: React.FC = () => {
           <img
             src="https://res.cloudinary.com/dgzv4skru/image/upload/v1746559958/logo_ifvbft.svg"
             alt="Healmirror Logo"
-            className="h-6 sm:h-8"
+            className="h-6 sm:h-8" // Responsive logo height
           />
         </Link>
       </div>
@@ -45,51 +62,74 @@ const Header: React.FC = () => {
         >
           About
         </Link>
-        <Link
-          to="#features"
+        <a // Changed to <a> for direct hash link scrolling for sections on the same page
+          href="/#features"
           className={`text-sm lg:text-base text-gray-700 hover:text-yellow-500 transition-colors duration-300 ${
-            activeSection === "features" ? "text-yellow-500" : ""
+            activeSection === "features" ? "text-yellow-500 font-semibold" : "" // Added font-semibold for active
           }`}
+          onClick={(e) => {
+            e.preventDefault();
+            document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+            setIsMenuOpen(false); // Close mobile menu if open
+          }}
         >
           Features
-        </Link>
-        <Link
-          to="#testimonials"
+        </a>
+        <a
+          href="/#testimonials"
           className={`text-sm lg:text-base text-gray-700 hover:text-yellow-500 transition-colors duration-300 ${
-            activeSection === "testimonials" ? "text-yellow-500" : ""
+            activeSection === "testimonials" ? "text-yellow-500 font-semibold" : ""
           }`}
+          onClick={(e) => {
+            e.preventDefault();
+            document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' });
+            setIsMenuOpen(false);
+          }}
         >
           Testimonials
-        </Link>
-        <Link
-          to="#contact"
+        </a>
+        <a
+          href="/#contact"
           className={`text-sm lg:text-base text-gray-700 hover:text-yellow-500 transition-colors duration-300 ${
-            activeSection === "contact" ? "text-yellow-500" : ""
+            activeSection === "contact" ? "text-yellow-500 font-semibold" : ""
           }`}
+          onClick={(e) => {
+            e.preventDefault();
+            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+            setIsMenuOpen(false);
+          }}
         >
           Contact Us
-        </Link>
+        </a>
       </nav>
 
       {/* Mobile Menu Button */}
-      <button 
-        className="md:hidden p-2"
+      <button
+        className="md:hidden p-2 text-gray-700 hover:text-yellow-500" // Added color
         onClick={() => setIsMenuOpen(!isMenuOpen)}
+        aria-label="Open menu" // Accessibility
+        aria-expanded={isMenuOpen}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-        </svg>
+        {isMenuOpen ? (
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /> {/* X icon */}
+          </svg>
+        ) : (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 6h16M4 12h16M4 18h16" // Hamburger icon
+            />
+          </svg>
+        )}
       </button>
 
       {/* Mobile Menu */}
@@ -98,38 +138,50 @@ const Header: React.FC = () => {
           <div className="flex flex-col p-4 space-y-3">
             <Link
               to="/about"
-              className="text-gray-700 hover:text-yellow-500 transition-colors duration-300"
+              className="block px-3 py-2 text-gray-700 hover:text-yellow-500 hover:bg-yellow-50 rounded-md transition-colors duration-300" // Enhanced styling
               onClick={() => setIsMenuOpen(false)}
             >
               About
             </Link>
-            <Link
-              to="#features"
-              className={`text-gray-700 hover:text-yellow-500 transition-colors duration-300 ${
-                activeSection === "features" ? "text-yellow-500" : ""
+            <a // Changed to <a> for direct hash link scrolling
+              href="/#features"
+              className={`block px-3 py-2 text-gray-700 hover:text-yellow-500 hover:bg-yellow-50 rounded-md transition-colors duration-300 ${
+                activeSection === "features" ? "text-yellow-500 font-semibold bg-yellow-50" : "" // Added font-semibold and bg for active
               }`}
-              onClick={() => setIsMenuOpen(false)}
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+                setIsMenuOpen(false);
+              }}
             >
               Features
-            </Link>
-            <Link
-              to="#testimonials"
-              className={`text-gray-700 hover:text-yellow-500 transition-colors duration-300 ${
-                activeSection === "testimonials" ? "text-yellow-500" : ""
+            </a>
+            <a
+              href="/#testimonials"
+              className={`block px-3 py-2 text-gray-700 hover:text-yellow-500 hover:bg-yellow-50 rounded-md transition-colors duration-300 ${
+                activeSection === "testimonials" ? "text-yellow-500 font-semibold bg-yellow-50" : ""
               }`}
-              onClick={() => setIsMenuOpen(false)}
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' });
+                setIsMenuOpen(false);
+              }}
             >
               Testimonials
-            </Link>
-            <Link
-              to="#contact"
-              className={`text-gray-700 hover:text-yellow-500 transition-colors duration-300 ${
-                activeSection === "contact" ? "text-yellow-500" : ""
+            </a>
+            <a
+              href="/#contact"
+              className={`block px-3 py-2 text-gray-700 hover:text-yellow-500 hover:bg-yellow-50 rounded-md transition-colors duration-300 ${
+                activeSection === "contact" ? "text-yellow-500 font-semibold bg-yellow-50" : ""
               }`}
-              onClick={() => setIsMenuOpen(false)}
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                setIsMenuOpen(false);
+              }}
             >
               Contact Us
-            </Link>
+            </a>
           </div>
         </div>
       )}
@@ -137,4 +189,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header
+export default Header;
