@@ -8,36 +8,10 @@ interface ClientHeroProps {
   isClient: boolean;
 }
 
-const ClientHero: React.FC<ClientHeroProps> = ({ isClient, setIsClient }) => {
+const ClientHero: React.FC<ClientHeroProps> = () => {
   return (
     <main>
       <section className="relative overflow-hidden m-4 sm:m-6 md:m-8 lg:m-10">
-        {/* Toggle Button */}
-        <div className="absolute top-2 sm:top-4 left-1/2 transform -translate-x-1/2 z-20 px-4 w-full max-w-[360px] sm:max-w-[483px]">
-          <div className="rounded-full p-0.5 sm:p-1 inline-flex shadow-lg bg-white/80 backdrop-blur-sm w-full h-[48px] sm:h-[68px] justify-center">
-            <button
-              className={`py-1 px-2 sm:py-2 sm:px-6 rounded-full text-[10px] sm:text-sm md:text-base transition-all duration-300 flex-1 whitespace-nowrap ${
-                isClient
-                  ? "bg-yellow-400 text-gray-800 shadow-md"
-                  : "bg-transparent text-gray-500 hover:text-gray-700"
-              }`}
-              onClick={() => setIsClient(true)}
-            >
-              Client
-            </button>
-            <button
-              className={`py-1 px-2 sm:py-2 sm:px-6 rounded-full text-[10px] sm:text-sm md:text-base transition-all duration-300 flex-1 whitespace-nowrap ${
-                !isClient
-                  ? "bg-yellow-400 text-gray-800 shadow-md"
-                  : "bg-transparent text-gray-500 hover:text-gray-700"
-              }`}
-              onClick={() => setIsClient(false)}
-            >
-              Mental Health Professional
-            </button>
-          </div>
-        </div>
-
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
@@ -56,10 +30,10 @@ const ClientHero: React.FC<ClientHeroProps> = ({ isClient, setIsClient }) => {
               For Everyone
             </h1>
 
-            <p className="text-2xl sm:text-2xl md:text-2xl lg:text-2xl leading-tight sm:leading-[1] tracking-[0em] font-serif text-[#FDC30B]">
+            <p className="text-2xl font-serif text-[#FDC30B]">
               Make your Problems
             </p>
-            <p className="text-2xl sm:text-2xl md:text-2xl lg:text-2xl leading-tight sm:leading-[1] tracking-[0em] font-serif text-[#FDC30B] mb-6 sm:mb-8">
+            <p className="text-2xl font-serif text-[#FDC30B] mb-6 sm:mb-8">
               less of a problem with <span className="underline">Therapy.</span>
             </p>
             <button className="bg-[#FDC30B] font-inter text-sm sm:text-base text-[#373B44] px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl font-medium hover:bg-yellow-500 transition-colors duration-300 flex items-center mx-auto">
