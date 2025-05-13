@@ -13,10 +13,10 @@ const ClientHero: React.FC<ClientHeroProps> = ({ isClient, setIsClient }) => {
     <main>
       <section className="relative overflow-hidden m-4 sm:m-6 md:m-8 lg:m-10">
         {/* Toggle Button */}
-        <div className="absolute top-2 sm:top-4 left-1/2 transform -translate-x-1/2 z-20 px-4 w-full max-w-[483px]">
-          <div className="rounded-full p-1 inline-flex shadow-lg bg-white/80 backdrop-blur-sm w-full h-[68px] justify-center">
+        <div className="absolute top-2 sm:top-4 left-1/2 transform -translate-x-1/2 z-20 px-4 w-full max-w-[360px] sm:max-w-[483px]">
+          <div className="rounded-full p-0.5 sm:p-1 inline-flex shadow-lg bg-white/80 backdrop-blur-sm w-full h-[48px] sm:h-[68px] justify-center">
             <button
-              className={`py-2 px-3 sm:px-6 rounded-full text-xs sm:text-sm md:text-base transition-all duration-300 flex-1 whitespace-nowrap ${
+              className={`py-1 px-2 sm:py-2 sm:px-6 rounded-full text-[10px] sm:text-sm md:text-base transition-all duration-300 flex-1 whitespace-nowrap ${
                 isClient
                   ? "bg-yellow-400 text-gray-800 shadow-md"
                   : "bg-transparent text-gray-500 hover:text-gray-700"
@@ -26,7 +26,7 @@ const ClientHero: React.FC<ClientHeroProps> = ({ isClient, setIsClient }) => {
               Client
             </button>
             <button
-              className={`py-2 px-3 sm:px-6 rounded-full text-xs sm:text-sm md:text-base transition-all duration-300 flex-1 whitespace-nowrap ${
+              className={`py-1 px-2 sm:py-2 sm:px-6 rounded-full text-[10px] sm:text-sm md:text-base transition-all duration-300 flex-1 whitespace-nowrap ${
                 !isClient
                   ? "bg-yellow-400 text-gray-800 shadow-md"
                   : "bg-transparent text-gray-500 hover:text-gray-700"

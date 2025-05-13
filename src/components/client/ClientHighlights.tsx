@@ -1,10 +1,10 @@
 const ClientHighlights = () => {
   return (
     <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center px-4 sm:px-6 md:px-8 lg:px-20 py-12 sm:py-16 bg-white gap-8 lg:gap-12">
-      {/* Left Side: Staggered Images */}
-      <div className="relative flex flex-col items-center lg:items-start w-full lg:w-auto">
+      {/* Left Side: Centered Images on Mobile */}
+      <div className="relative flex flex-col items-center w-full lg:w-auto">
         {/* First Image */}
-        <div className="relative lg:-left-12 w-full max-w-[280px] sm:max-w-[320px] lg:max-w-none">
+        <div className="relative w-full max-w-[280px] sm:max-w-[320px] lg:max-w-none mx-auto">
           <img
             src="https://res.cloudinary.com/dgzv4skru/image/upload/v1746559654/ss1_nnlhft.svg"
             alt="Mobile Screen 1"
@@ -13,7 +13,7 @@ const ClientHighlights = () => {
         </div>
 
         {/* Second Image */}
-        <div className="relative lg:left-10 mt-8 lg:mt-12 w-full max-w-[280px] sm:max-w-[320px] lg:max-w-none">
+        <div className="relative mt-8 lg:mt-12 w-full max-w-[280px] sm:max-w-[320px] lg:max-w-none mx-auto lg:left-10">
           <img
             src="https://res.cloudinary.com/dgzv4skru/image/upload/v1746559654/ss2_ifgtqf.svg"
             alt="Mobile Screen 2"
@@ -23,8 +23,10 @@ const ClientHighlights = () => {
       </div>
 
       {/* Right Side: Highlights */}
-      <div className="mt-12 lg:mt-0 max-w-xl w-full">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-gray-900">Our Highlights</h2>
+      <div className="mt-12 lg:mt-0 max-w-xl w-full px-2 sm:px-4">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-gray-900 text-center lg:text-left">
+          Our Highlights
+        </h2>
         <div className="space-y-6 sm:space-y-8">
           {[
             {
